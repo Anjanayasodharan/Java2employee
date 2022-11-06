@@ -28,40 +28,42 @@ public class Employee {
             switch (choice)
             {
                 case 1:
-                    System.out.println("insertdata");
-                    System.out.println("enter employee code");
-                    employeecode=s.nextInt();
-                    System.out.println("enter employee name");
-                    employeename=s.next();
-                    System.out.println("enter employee desigantion");
-                    designation=s.next();
-                    System.out.println("enter employee salary");
-                    salary=s.nextInt();
-                    System.out.println("enter company name");
-                    companyname=s.next();
-                    System.out.println("enter phone number");
-                    phno=s.nextInt();
-                    System.out.println("enter email id");
-                    emailid=s.next();
-                    System.out.println("enter password");
-                    password=s.next();
+                    System.out.println("Insert the data");
+                    System.out.println("Enter the empcode");
+                    int empcode = s.nextInt();
+                    System.out.println("Enter the name of the employee ");
+                    String name = s.next();
+                    System.out.println("Enter the designation ");
+                    String design = s.next();
+                    System.out.println("Enter the salary of the employee");
+                    salary = s.nextInt();
+                    System.out.println("Enter the company name of the employeee");
+                    String compName = s.next();
+                    System.out.println("Enter the phone number of the employee ");
+                    String phone = s.next();
+                    System.out.println("Enter the Email id of the employee ");
+                    String email = s.next();
+                    System.out.println("Enter the password");
+                    password = s.next();
                     try{
                         Class.forName("com.mysql.jdbc.Driver");
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeedb","root","");
-                        String sql="INSERT INTO `employees`(`employeecode`, `employeename`, `designation`, `salary`, `companyname`, `phno`, `emailid`, `password`) VALUES(?,?,?,?,?,?,?,?)";
+                        String sql = "INSERT INTO `employees`(`employeecode`, `employeename`, `designation`, `salary`, `companyname`, `phno`, `emailid`, `password`) VALUES(?,?,?,?,?,?,?,?)";
                         PreparedStatement stmt = con.prepareStatement(sql);
-                        stmt.setInt(1,employeecode);
-                        stmt.setString(2,employeename);
-                        stmt.setString(3,designation);
-                        stmt.setString(4,companyname );
-                        stmt.setInt(5,phno);
-                        stmt.setString(6,emailid);
-                        stmt.setString(7,password);
-
+                        stmt.setInt(1,empcode);
+                        stmt.setString(2,name);
+                        stmt.setString(3,design);
+                        stmt.setInt(4,salary);
+                        stmt.setString(5,compName);
+                        stmt.setString(6,phone);
+                        stmt.setString(7,email);
+                        stmt.setString(8,password);
+                        stmt.executeUpdate();
                     }
                     catch (Exception e){
-                        System.out.println(e);
+                        System.out.println((e));
                     }
+                    //String sql = "INSERT INTO `students`(`name`, `admNo`, `rollNo`, `collage`) VALUES ('"+name+"','"+admin+"','"+rollNo+"','"+collegeName+"')";
                     break;
 
                 case 2:
