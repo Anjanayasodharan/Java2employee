@@ -130,6 +130,37 @@ public class Employee {
                         System.out.println(e);
                     }
                     break;
+
+                case 4:
+                    System.out.println("Update the employee details ");
+                    System.out.println("Enter the empcode");
+                    int empCode = s.nextInt();
+                    System.out.println("Enter the name of the employee ");
+                    String Name = s.next();
+                    System.out.println("Enter the designation ");
+                    String Design = s.next();
+                    System.out.println("Enter the salary of the employee");
+                    int Salary = s.nextInt();
+                    System.out.println("Enter the company name of the employeee");
+                    String CompName = s.next();
+                    System.out.println("Enter the phone number of the employee ");
+                    String Phone = s.next();
+                    System.out.println("Enter the Email id of the employee ");
+                    String Email = s.next();
+                    System.out.println("Enter the password");
+                    String Password = s.next();
+                    try{
+                        Class.forName("com.mysql.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeedb", "root", "");
+                        String sql = "UPDATE `employees` SET `employeecode`='"+empCode+"',`employeename`='"+Name+"',`designation`='"+Design+"',`salary`='"+Salary+"',`companyname`='"+CompName+"',`phno`='"+Phone+"',`emailid`='"+Email+"',`password`='"+Password+"' WHERE `employeecode`="+empCode;
+                        Statement stmt = con.createStatement();
+                        stmt.executeUpdate(sql);
+                        System.out.println("Updated successfully");
+                    }
+                    catch (Exception e){
+                        System.out.println(e);
+                    }
+
                 case 5:
                     System.out.println("delete data");
                     System.out.println("enter employee code:");
