@@ -29,6 +29,40 @@ public class Employee {
             {
                 case 1:
                     System.out.println("insertdata");
+                    System.out.println("enter employee code");
+                    employeecode=s.nextInt();
+                    System.out.println("enter employee name");
+                    employeename=s.next();
+                    System.out.println("enter employee desigantion");
+                    designation=s.next();
+                    System.out.println("enter employee salary");
+                    salary=s.nextInt();
+                    System.out.println("enter company name");
+                    companyname=s.next();
+                    System.out.println("enter phone number");
+                    phno=s.nextInt();
+                    System.out.println("enter email id");
+                    emailid=s.next();
+                    System.out.println("enter password");
+                    password=s.next();
+                    try{
+                        Class.forName("com.mysql.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeedb","root","");
+                        String sql="INSERT INTO `employees`(`employeecode`, `employeename`, `designation`, `salary`, `companyname`, `phno`, `emailid`, `password`) VALUES(?,?,?,?,?,?,?,?)";
+                        PreparedStatement stmt = con.prepareStatement(sql);
+                        stmt.setInt(1,employeecode);
+                        stmt.setString(2,employeename);
+                        stmt.setString(3,designation);
+                        stmt.setString(4,companyname );
+                        stmt.setInt(5,phno);
+                        stmt.setString(6,emailid);
+                        stmt.setString(7,password);
+
+                    }
+                    catch (Exception e){
+                        System.out.println(e);
+                    }
+                    break;
 
                 case 2:
                     System.out.println("select data");
