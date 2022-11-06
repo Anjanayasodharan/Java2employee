@@ -98,6 +98,37 @@ public class Employee {
                     break;
                 case 3:
                     System.out.println("search data");
+                    System.out.println("enter employee code:");
+                    employeecode=s.nextInt();
+                    try{
+                        Class.forName("com.mysql.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeedb","root","");
+                        String sql="SELECT `employeecode`, `employeename`, `designation`, `salary`, `companyname`, `phno`, `emailid`, `password` FROM `employees` WHERE `employeecode`="+String.valueOf(employeecode);
+                        Statement stmt = con.createStatement();
+                        ResultSet rs= stmt.executeQuery(sql);
+                        while(rs.next()){
+                            String getemployeecode=rs.getString("employeecode");
+                            String getemployeename=rs.getString("employeename");
+                            String getdesignation=rs.getString("designation");
+                            String getsalary=rs.getString("salary");
+                            String getcompanyname=rs.getString("companyname");
+                            String getphno=rs.getString("phno");
+                            String getemailid=rs.getString("emailid");
+                            String getpassword=rs.getString("password");
+                            System.out.println("Empcode="+getemployeecode);
+                            System.out.println("Empname="+getemployeename);
+                            System.out.println("designation="+getdesignation);
+                            System.out.println("salary="+getsalary);
+                            System.out.println("companyname="+getcompanyname);
+                            System.out.println("phoneno="+getphno);
+                            System.out.println("emailid="+getemailid);
+                            System.out.println("password="+getpassword+"\n");
+                        }
+
+                    }
+                    catch (Exception e){
+                        System.out.println(e);
+                    }
                     break;
                 case 5:
                     System.out.println("delete data");
